@@ -1,12 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
 const SignUpForm = () => {
+  const navigate = useNavigate(); // Initialize navigate function
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    navigate('/profile'); // Navigate to the profile page
+  };
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen bg-white overflow-x-hidden overflow-y-hidden pt-9">
       {/* Wrapper with full height and width */}
-      <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-fit h-fit">
+      <div className="flex flex-col md:flex-row bg-white overflow-x-hidden overflow-y-hidden w-fit h-fit mt-1">
         {/* Left Section - Image */}
-        <div className="hidden md:flex md:w-1/2 bg-gray-200">
+        <div className="hidden md:flex md:w-1/2 bg-white">
           <img
             src="src/assets/login_img.png"
             alt="Illustration"
@@ -16,14 +24,14 @@ const SignUpForm = () => {
 
         {/* Right Section - Form */}
         <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center h-full">
-          <h2 className="text-2xl font-semibold text-gray-800">Create an account</h2>
+          <h2 className="text-4xl font-semibold text-gray-800">Create an account</h2>
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{' '}
             <a href="#" className="text-blue-600 hover:underline">
               Log in
             </a>
           </p>
-          <form className="mt-6 flex flex-col">
+          <form className="mt-6 flex flex-col" onSubmit={handleSubmit}>
             <div className="flex flex-col md:flex-row gap-4">
               <input
                 type="text"
@@ -72,7 +80,7 @@ const SignUpForm = () => {
             <span className="text-gray-500 mx-4">or</span>
             <span className="border-t border-gray-300 w-1/4"></span>
           </div>
-          <button className="w-full mt-6 bg-gray-100 text-gray-800 py-2 rounded-lg border border-gray-300 flex items-center justify-center">
+          <button className="w-full mt-6 bg-gray-100 text-gray-800 py-2 rounded-lg border border-gray-300 flex items-center justify-center hover:bg-gray-200 hover:text-gray-900 transition-colors">
             <img
               src="src/assets/google.png"
               alt="Google Icon"
@@ -83,7 +91,7 @@ const SignUpForm = () => {
         </div>
       </div>
     </div>
-  );  
+  );
 };
 
 export default SignUpForm;

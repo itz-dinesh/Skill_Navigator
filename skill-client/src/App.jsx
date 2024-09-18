@@ -1,21 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Signup from './components/Signup'
-import Sidebar from './components/SideBar'
-import ProfileForm from './components/ProfileForm'
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Signup from './components/Signup';
+import SidebarAndProfile from './components/SidebarAndProfile';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <div>
-      <Signup />
-      {/* <Sidebar />
-      <ProfileForm /> */}
-    </div>
-  )
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Signup />} />
+          <Route path="/profile" element={<SidebarAndProfile />} />
+          {/* Add more routes here as needed */}
+        </Routes>
+      </div>
+    </Router>
+  );
 }
 
 export default App;
