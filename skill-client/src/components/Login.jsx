@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link from react-router-dom
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
-const SignUpForm = () => {
+const LoginForm = () => {
   const navigate = useNavigate(); // Initialize navigate function
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
-    navigate('/Home'); // Navigate to the homepage after sign-up
+    navigate('/profile'); // Navigate to the profile page
   };
 
   return (
@@ -24,26 +24,14 @@ const SignUpForm = () => {
 
         {/* Right Section - Form */}
         <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-center h-full">
-          <h2 className="text-4xl font-semibold text-gray-800">Create an account</h2>
+          <h2 className="text-4xl font-semibold text-gray-800">Login to your account</h2>
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{' '}
-            <Link to="/login" className="text-blue-600 hover:underline">
+            <a href="#" className="text-blue-600 hover:underline">
               Log in
-            </Link>
+            </a>
           </p>
           <form className="mt-6 flex flex-col" onSubmit={handleSubmit}>
-            <div className="flex flex-col md:flex-row gap-4">
-              <input
-                type="text"
-                placeholder="First Name"
-                className="w-full md:w-1/2 px-4 py-2 border rounded-lg bg-white placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                className="w-full md:w-1/2 px-4 py-2 border rounded-lg bg-white placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
             <div className="mt-4">
               <input
                 type="email"
@@ -72,7 +60,7 @@ const SignUpForm = () => {
               type="submit"
               className="w-full mt-6 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
             >
-              Create Account
+              Login
             </button>
           </form>
           <div className="flex items-center justify-center mt-6">
@@ -94,4 +82,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default LoginForm;
