@@ -17,13 +17,13 @@ const Categories = () => {
         {categories.map((category, index) => (
           <div 
             key={index} 
-            className={`flex items-center bg-white p-6 rounded-lg shadow-md ${['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'flex-row' : 'flex-col'}`}
+            className={`flex items-center bg-white p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:bg-blue-100 ${['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'flex-row' : 'flex-col'}`}
           >
             <img 
               src={category.icon} 
               alt={category.name} 
               className="w-16 h-16" 
-              style={{ marginRight: ['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'calc(20px + 6px)' : '20px' }} // Apply right margin
+              style={{ marginRight: ['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'calc(20px + 6px)' : '20px' }}
             />
             <div className={`flex flex-col ${['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'text-3xl font-semibold' : 'text-base'}`}>
               {['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? (

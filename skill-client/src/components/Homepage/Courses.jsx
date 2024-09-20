@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 const courses = [
     {
@@ -7,6 +8,7 @@ const courses = [
         rating: 4.7,
         modules: ['Introduction to Java', 'Java Fundamental', 'Hierarchy'],
         img: 'src/assets/java.png',
+        path: '/Courses/Javacoursepage', // Correct path to match route
     },
     {
         title: 'Data Engineering',
@@ -14,6 +16,7 @@ const courses = [
         rating: 4.7,
         modules: ['Introduction to Data Engineering', 'Data Modelling', 'Database System'],
         img: 'src/assets/dataengineer.png',
+        path: '/courses/data-engineering-course',
     },
     {
         title: '.Net Beginner to Advance',
@@ -21,14 +24,17 @@ const courses = [
         rating: 4.7,
         modules: ['Introduction to .NET', 'Fundamental', 'Hierarchy'],
         img: 'src/assets/net.png',
+        path: '/courses/dotnet-course',
     },
 ];
 
 const Courses = () => {
     const [selectedCourse, setSelectedCourse] = useState(null);
+    const navigate = useNavigate(); // Initialize useNavigate hook
 
-    const handleCourseClick = (index) => {
-        setSelectedCourse(index);
+    const handleCourseClick = (path) => {
+        // Navigate to the respective course page based on the course path
+        navigate(path);
     };
 
     return (
@@ -39,7 +45,7 @@ const Courses = () => {
                     <div
                         key={index}
                         className={`flex bg-white p-6 rounded-lg shadow-md cursor-pointer transition-transform transform ${selectedCourse === index ? 'scale-105 shadow-xl' : 'hover:scale-105 hover:shadow-lg'} duration-300 ease-in-out`}
-                        onClick={() => handleCourseClick(index)}
+                        onClick={() => handleCourseClick(course.path)} // Navigate to the course path
                     >
                         <img src={course.img} alt={course.title} className="w-1/4 rounded-lg" />
                         <div className="ml-6">
