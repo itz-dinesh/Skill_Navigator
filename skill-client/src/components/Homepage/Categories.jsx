@@ -12,25 +12,37 @@ const categories = [
 const Categories = () => {
   return (
     <div className="py-8 bg-gray-50">
-      <h2 className="text-center text-3xl font-bold mb-8">Explore courses by category</h2>
+      <h2 className="text-center text-2xl font-bold mb-6">Explore courses by category</h2>
       <div className="grid grid-cols-3 gap-6 px-16">
         {categories.map((category, index) => (
           <div 
             key={index} 
-            className={`flex items-center bg-white p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:bg-blue-100 ${['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'flex-row' : 'flex-col'}`}
+            className={`flex items-center bg-white p-6 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 hover:bg-blue-100`}
           >
             <img 
               src={category.icon} 
               alt={category.name} 
-              className="w-16 h-16" 
-              style={{ marginRight: ['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'calc(20px + 6px)' : '20px' }}
+              className="w-16 h-16 mr-5" 
             />
-            <div className={`flex flex-col ${['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'text-3xl font-semibold' : 'text-base'}`}>
-              {['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? (
-                <>
-                  <div className="mb-1">{category.name.split(' & ')[0]}</div>
-                  <div>{category.name.split(' & ')[1]}</div>
-                </>
+            <div className={`flex flex-col ${['Design & Development', 'Finance Management', 'Business & Consulting', 'Programming Courses', 'Marketing & Communication', 'Digital Marketing'].includes(category.name) ? 'text-2xl font-semibold' : 'text-base'}`}>
+              {category.name === 'Business & Consulting' ? (
+                <div className="flex flex-row">
+                  <div className="mr-1">Business</div>
+                  <div>&</div>
+                  <div className="ml-1">Consulting</div>
+                </div>
+              ) : category.name === 'Marketing & Communication' ? (
+                <div className="flex flex-row">
+                  <div className="mr-1">Marketing</div>
+                  <div>&</div>
+                  <div className="ml-1">Communication</div>
+                </div>
+              ) : category.name === 'Design & Development' ? (
+                <div className="flex flex-row">
+                  <div className="mr-1">Design</div>
+                  <div>&</div>
+                  <div className="ml-1">Development</div>
+                </div>
               ) : (
                 <div>{category.name}</div>
               )}

@@ -1,49 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ onCoursesClick, onAboutClick }) => {
   return (
-    <nav className="flex items-center justify-between p-2 shadow-md bg-white"> {/* Reduced padding */}
+    <nav className="flex items-center justify-between p-2 shadow-md bg-white">
       <div className="flex items-center">
         <img 
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Hexaware_new_logo.svg/768px-Hexaware_new_logo.svg.png?20201230064751" 
           alt="Logo" 
-          className="h-20 w-20" // Reduced logo size to match navbar height
+          className="h-20 w-20"
         />
       </div>
       <div className="flex-grow flex items-center justify-end">
-        <ul className="flex space-x-4"> {/* Reduced spacing between nav items */}
+        <ul className="flex space-x-4">
           <li className="relative">
             <Link 
-              to="/" 
-              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium" // Reduced text size
+              to="/" // Use Link for Home navigation
+              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium"
             >
               Home
             </Link>
           </li>
           <li className="relative">
-            <Link 
-              to="/courses" 
-              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium" // Reduced text size
+            <a 
+              onClick={onCoursesClick} 
+              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium cursor-pointer"
             >
               Courses
-            </Link>
+            </a>
           </li>
           <li className="relative">
             <Link 
               to="/mentors" 
-              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium" // Reduced text size
+              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium"
             >
               Mentors
             </Link>
           </li>
           <li className="relative">
-            <Link 
-              to="/about" 
-              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium" // Reduced text size
+            <a 
+              onClick={onAboutClick} // Call scrollToFooter function
+              className="text-gray-800 hover:text-blue-500 transition-colors transform hover:scale-105 text-lg font-medium cursor-pointer"
             >
               About
-            </Link>
+            </a>
           </li>
         </ul>
         <button className="bg-gray-200 text-gray-800 px-3 py-1 rounded ml-4 hover:bg-blue-500 hover:text-white transition-colors text-lg font-medium">

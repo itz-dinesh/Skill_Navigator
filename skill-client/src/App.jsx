@@ -12,12 +12,13 @@ import Completedot from './components/Completedcourse/Completedot';
 import Completedata from './components/Completedcourse/Completedata';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import LandingPage from './components/Landingpage';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Signup />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<SidebarAndProfile />} />

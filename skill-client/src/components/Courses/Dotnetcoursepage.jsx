@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Navbar'; // Adjust the path according to your folder structure
 import Footer from '../Footer'; // Adjust the path according to your folder structure
 
 const Dotnetcoursepage = () => {
+  // State to manage visibility for the transition
+  const [isVisible, setVisible] = useState(false);
+
+  // Scroll to top and set visibility on component mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setVisible(true);
+  }, []);
+
   return (
     <div>
       {/* Navbar */}
       <Navbar />
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto p-8">
+      <div className={`max-w-4xl mx-auto p-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {/* Header Section */}
         <div className="text-center">
           <img

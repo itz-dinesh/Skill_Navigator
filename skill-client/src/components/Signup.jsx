@@ -51,16 +51,17 @@ const SignUp = () => {
 
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
+      initial={{ opacity: 0 }} // Start with 0 opacity
+      animate={{ opacity: 1 }} // Animate to full opacity
+      transition={{ duration: 0.5 }} // Duration of the fade-in
       className="flex items-center justify-center min-h-screen bg-white overflow-x-hidden overflow-y-hidden pt-9"
     >
       {/* Logo at the top left */}
       <div className="absolute top-4 left-4">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Hexaware_new_logo.svg/768px-Hexaware_new_logo.svg.png?20201230064751" // Update the path to your logo image
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Hexaware_new_logo.svg/768px-Hexaware_new_logo.svg.png?20201230064751"
           alt="Logo"
-          className="w-24 h-auto" // Adjust the size as needed
+          className="w-24 h-auto"
         />
       </div>
 
@@ -89,9 +90,7 @@ const SignUp = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
-          <h2 className="text-4xl font-semibold text-gray-800">
-            Create an account
-          </h2>
+          <h2 className="text-4xl font-semibold text-gray-800">Create an account</h2>
           <p className="mt-2 text-sm text-gray-600">
             Already have an account?{" "}
             <Link to="/login" className="text-blue-600 hover:underline">
