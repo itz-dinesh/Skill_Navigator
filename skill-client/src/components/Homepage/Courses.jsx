@@ -16,7 +16,7 @@ const courses = [
         rating: 4.7,
         modules: ['Introduction to Data Engineering', 'Data Modelling', 'Database System'],
         img: 'src/assets/dataengineer.png',
-        path: '/courses/data-engineering-course',
+        path: '/Courses/Dataengcoursepage',
     },
     {
         title: '.Net Beginner to Advance',
@@ -24,7 +24,7 @@ const courses = [
         rating: 4.7,
         modules: ['Introduction to .NET', 'Fundamental', 'Hierarchy'],
         img: 'src/assets/net.png',
-        path: '/courses/dotnet-course',
+        path: '/Courses/Dotnetcoursepage',
     },
 ];
 

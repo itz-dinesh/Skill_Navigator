@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar'; // Adjust the path as necessary
 import Footer from '../Footer'; // Adjust the path as necessary
 
-const Javacoursepage = () => {
-  // State to manage the expansion of course sections and visibility
+const Completejava = () => {
+  // State to manage the expansion of course sections
   const [isFundamentalsExpanded, setFundamentalsExpanded] = useState(false);
   const [isBasicOOPsExpanded, setBasicOOPsExpanded] = useState(false);
   const [isOOPsImplementationExpanded, setOOPsImplementationExpanded] = useState(false);
-  const [isVisible, setVisible] = useState(false);
-
-  // Scroll to top on component mount and set visibility for transition
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setVisible(true);
-  }, []);
 
   return (
     <div>
       {/* Navbar */}
       <Navbar />
 
-      <div className={`max-w-4xl mx-auto p-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className="max-w-4xl mx-auto p-8">
         {/* Header Section */}
         <div className="text-center">
           <img
@@ -30,23 +23,17 @@ const Javacoursepage = () => {
           />
           <h1 className="text-4xl font-bold mb-4">Java Programming</h1>
 
-          {/* Spacing Adjustments */}
-          <div className="flex justify-center space-x-12 mb-6">
-            <div className="bg-red-100 text-red-600 px-4 py-2 rounded-full">
-              Not Enrolled
-            </div>
-            <div className="bg-gray-100 text-gray-600 px-4 py-2 rounded-full">
-              Price: FREE
-            </div>
-            <button className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out">
-              Login to Enroll
-            </button>
+          {/* Progress Bar */}
+          <div className="w-full bg-gray-300 rounded-full h-6 mb-2">
+            <div
+              className="bg-blue-600 h-6 rounded-full"
+              style={{ width: '76%' }} // Update this percentage dynamically as per progress
+            />
           </div>
-          
-          {/* Additional spacing for the text */}
-          <p className="text-gray-600 mb-8">
-            You are not yet enrolled in this course.
-          </p>
+          <div className="text-center">
+            <span className="text-black text-lg font-bold block">76% completed</span>
+            <hr className="border-t-2 border-gray-400 mt-2" />
+          </div>
         </div>
 
         {/* Course Description */}
@@ -148,8 +135,8 @@ const Javacoursepage = () => {
 
         {/* Quiz/Start Button */}
         <div className="text-center">
-          <button className="bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition duration-300 ease-in-out">
-            Start
+          <button className="bg-red-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition duration-300 ease-in-out">
+            Start Quiz
           </button>
         </div>
       </div>
@@ -160,4 +147,4 @@ const Javacoursepage = () => {
   );
 };
 
-export default Javacoursepage;
+export default Completejava;

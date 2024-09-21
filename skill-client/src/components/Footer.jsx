@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-wrap justify-between items-center px-4">
         {/* Logo and Social Media */}
         <div className="flex flex-col items-center space-y-4">
-          <img src="src/assets/Hexaware.png" alt="Hexaware Logo" className="h-12" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Hexaware_new_logo.svg/768px-Hexaware_new_logo.svg.png?20201230064751" alt="Hexaware Logo" className="h-24 w-24" />
           <div className="flex space-x-4">
             <a href="#" className="text-gray-600 hover:text-black">
               <i className="fab fa-facebook"></i>
