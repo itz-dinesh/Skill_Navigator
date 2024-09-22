@@ -109,7 +109,15 @@ const SidebarAndProfile = () => {
         {/* Links */}
         <div className="flex flex-col mt-10 mb-auto">
           <a
-            href="/courses"
+            href="/home"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-4 hover:bg-blue-100 w-full text-left block text-blue-600"
+          >
+            Home
+          </a>
+          <a
+            href="/home"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-4 hover:bg-blue-100 w-full text-left block text-blue-600"
@@ -117,20 +125,12 @@ const SidebarAndProfile = () => {
             Courses
           </a>
           <a
-            href="/profile"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-6 py-4 hover:bg-blue-100 w-full text-left block text-blue-600"
-          >
-            Profile
-          </a>
-          <a
             href="/signup"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-4 hover:bg-blue-100 w-full text-left block text-blue-600"
           >
-            Sign Up
+            Activity
           </a>
         </div>
 

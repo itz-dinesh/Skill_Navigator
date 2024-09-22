@@ -10,9 +10,36 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/Home");
+
+    const userData = {
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        navigate("/Home");
+      } else {
+        const errorData = await response.json();
+        console.error('Error:', errorData.error);
+        alert(errorData.error); // Alert the user about the error
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      alert('Network error, please try again.'); // Alert for network issues
+    }
   };
 
   const inputVariant = {
@@ -51,12 +78,11 @@ const SignUp = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }} // Start with 0 opacity
-      animate={{ opacity: 1 }} // Animate to full opacity
-      transition={{ duration: 0.5 }} // Duration of the fade-in
-      className="flex items-center justify-center min-h-screen bg-white overflow-x-hidden overflow-y-hidden pt-9"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="flex items-center justify-center min-h-screen bg-white pt-9"
     >
-      {/* Logo at the top left */}
       <div className="absolute top-4 left-4">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Hexaware_new_logo.svg/768px-Hexaware_new_logo.svg.png?20201230064751"
@@ -66,7 +92,7 @@ const SignUp = () => {
       </div>
 
       <motion.div
-        className="flex flex-col md:flex-row bg-white overflow-x-hidden overflow-y-hidden w-fit h-fit mt-1"
+        className="flex flex-col md:flex-row bg-white w-fit h-fit mt-1"
         initial="hidden"
         animate="visible"
         transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -99,12 +125,7 @@ const SignUp = () => {
           </p>
           <form className="mt-6 flex flex-col" onSubmit={handleSubmit}>
             <div className="flex flex-col md:flex-row gap-4">
-              <motion.div
-                className="relative w-full md:w-1/2"
-                initial="initial"
-                whileHover="hover"
-                whileFocus="focus"
-              >
+              <motion.div className="relative w-full md:w-1/2">
                 <motion.input
                   type="text"
                   placeholder="First Name"
@@ -112,6 +133,8 @@ const SignUp = () => {
                   onChange={(e) => setFirstName(e.target.value)}
                   className="w-full px-4 py-2 border rounded-lg bg-white placeholder-transparent text-black focus:outline-none"
                   variants={inputVariant}
+                  whileHover="hover"
+                  whileFocus="focus"
                 />
                 {firstName.length === 0 && (
                   <motion.label
@@ -124,12 +147,7 @@ const SignUp = () => {
                 )}
               </motion.div>
 
-              <motion.div
-                className="relative w-full md:w-1/2"
-                initial="initial"
-                whileHover="hover"
-                whileFocus="focus"
-              >
+              <motion.div className="relative w-full md:w-1/2">
                 <motion.input
                   type="text"
                   placeholder="Last Name"
@@ -137,6 +155,8 @@ const SignUp = () => {
                   onChange={(e) => setLastName(e.target.value)}
                   className="w-full px-4 py-2 border rounded-lg bg-white placeholder-transparent text-black focus:outline-none"
                   variants={inputVariant}
+                  whileHover="hover"
+                  whileFocus="focus"
                 />
                 {lastName.length === 0 && (
                   <motion.label
@@ -149,12 +169,7 @@ const SignUp = () => {
                 )}
               </motion.div>
             </div>
-            <motion.div
-              className="relative mt-4"
-              initial="initial"
-              whileHover="hover"
-              whileFocus="focus"
-            >
+            <motion.div className="relative mt-4">
               <motion.input
                 type="email"
                 placeholder="E-mail"
@@ -162,6 +177,8 @@ const SignUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-2 border rounded-lg bg-white placeholder-transparent text-black focus:outline-none"
                 variants={inputVariant}
+                whileHover="hover"
+                whileFocus="focus"
               />
               {email.length === 0 && (
                 <motion.label
@@ -173,12 +190,7 @@ const SignUp = () => {
                 </motion.label>
               )}
             </motion.div>
-            <motion.div
-              className="relative mt-4"
-              initial="initial"
-              whileHover="hover"
-              whileFocus="focus"
-            >
+            <motion.div className="relative mt-4">
               <motion.input
                 type={password ? "password" : "text"}
                 placeholder="Enter your password"
@@ -186,6 +198,8 @@ const SignUp = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2 border rounded-lg bg-white placeholder-transparent text-black focus:outline-none"
                 variants={inputVariant}
+                whileHover="hover"
+                whileFocus="focus"
               />
               {password.length === 0 && (
                 <motion.label
@@ -233,7 +247,7 @@ const SignUp = () => {
               alt="Google Icon"
               className="w-5 h-5 mr-2"
             />
-            Continue with Google
+            Sign up with Google
           </motion.button>
         </motion.div>
       </motion.div>

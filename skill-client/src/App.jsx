@@ -13,6 +13,9 @@ import Completedata from './components/Completedcourse/Completedata';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LandingPage from './components/Landingpage';
+import ModulePage from './components/Modules/Modulepage';
+import Dataengmodulepage from './components/Modules/Dataengmodulepage';
+import Javamodulepage from './components/Modules/Javamodulepage';
 
 function App() {
   return (
@@ -31,6 +34,10 @@ function App() {
         <Route path="/Completedcourse/Completejava" element={<Completejava />} /> 
         <Route path="/Completedcourse/Completedot" element={<Completedot />} /> 
         <Route path="/Completedcourse/Completedata" element={<Completedata />} /> 
+        <Route path="/Module/Modulepage" element={<ModulePage />} /> 
+        <Route path="/Modulepage" element={<ModulePage />} /> 
+        <Route path="/dataengmodulepage" element={<Dataengmodulepage />} /> 
+        <Route path="/javamodulepage" element={<Javamodulepage />} /> 
         <Route path="/Navbar" element={<Navbar />} />
         <Route path="/Footer" element={<Footer />} />
       </Routes>

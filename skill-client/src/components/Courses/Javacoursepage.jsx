@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Navbar from '../Navbar'; // Adjust the path as necessary
 import Footer from '../Footer'; // Adjust the path as necessary
 
 const Javacoursepage = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   // State to manage the expansion of course sections and visibility
   const [isFundamentalsExpanded, setFundamentalsExpanded] = useState(false);
   const [isBasicOOPsExpanded, setBasicOOPsExpanded] = useState(false);
@@ -12,21 +15,25 @@ const Javacoursepage = () => {
   // Scroll to top on component mount and set visibility for transition
   useEffect(() => {
     window.scrollTo(0, 0);
-    setVisible(true);
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 100); // Adjust the timeout duration as needed
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
   return (
-    <div>
+    <div className={`transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {/* Navbar */}
       <Navbar />
 
-      <div className={`max-w-4xl mx-auto p-8 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`max-w-4xl mx-auto p-8`}>
         {/* Header Section */}
         <div className="text-center">
           <img
             src="/src/assets/javacourse.png" // Make sure this path is correct
             alt="Java Programming"
-            className="mx-auto mb-6 w-full max-w-full h-auto object-cover rounded-lg"
+            className="mx-auto mb-4 w-2/3 max-w-[400px] h-auto object-cover rounded-lg shadow-lg"
           />
           <h1 className="text-4xl font-bold mb-4">Java Programming</h1>
 
@@ -148,7 +155,10 @@ const Javacoursepage = () => {
 
         {/* Quiz/Start Button */}
         <div className="text-center">
-          <button className="bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition duration-300 ease-in-out">
+          <button
+            className="bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition duration-300 ease-in-out"
+            onClick={() => navigate('/javamodulepage')} // Navigate on click
+          >
             Start
           </button>
         </div>

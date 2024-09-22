@@ -12,7 +12,6 @@ const Home = () => {
   const footerRef = useRef(null); // Create a ref for the Footer section
 
   useEffect(() => {
-    // Trigger content display after initial render
     const timer = setTimeout(() => setShowContent(true), 100); // Adjust the delay if needed
     return () => clearTimeout(timer);
   }, []);
@@ -35,35 +34,24 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* Navbar will stay at the top */}
       <Navbar 
         onCoursesClick={scrollToCourses} 
         onHomeClick={scrollToTop} 
-        onAboutClick={scrollToFooter} // Pass scrollToFooter function
+        onAboutClick={scrollToFooter} 
       />
 
-      {/* Apply transition classes based on state */}
       <div
-        className={`transition-opacity duration-1000 ease-in-out ${
-          showContent ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`transition-opacity duration-1000 ease-in-out ${showContent ? 'opacity-100' : 'opacity-0'}`}
       >
-        {/* Hero section for introduction */}
-        <Hero />
-
-        {/* Stats section */}
+        <Hero onGetStartedClick={scrollToCourses} /> {/* Pass the function here */}
         <Stats />
-
-        {/* Categories section */}
         <Categories />
-
-        {/* Courses section */}
-        <div ref={coursesRef}> {/* Attach the ref to this div */}
+        
+        <div ref={coursesRef}>
           <Courses />
         </div>
 
-        {/* Footer section */}
-        <div ref={footerRef}> {/* Attach the ref to this div */}
+        <div ref={footerRef}>
           <Footer />
         </div>
       </div>
